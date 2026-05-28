@@ -3,15 +3,6 @@ variable "ami_value" {
   type        = string
 }
 
-variable "cidr_block" {
-  description = "cidr_ange"
-  type        = string
-}
-
-variable "subnet_cidr_range" {
-  description = "subnet_cidr_range"
-  type        = string
-}
 
 variable "instance_type" {
   description = "ec2_instance_type"
@@ -21,5 +12,21 @@ variable "instance_type" {
 
 variable "key_name" {
   description = "key_name"
+  type        = string
+}
+
+
+variable "subnet_id" {
+  description = "subnet_id"
+  type        = string
+}
+
+variable "vpc_security_group_ids" {
+  description = "vpc_security_group_ids"
+  type        = string
+}
+
+variable "vpc_id" {
+  description = "vpc_id"
   type        = string
 }
