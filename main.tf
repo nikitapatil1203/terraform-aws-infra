@@ -1,7 +1,7 @@
 
 module "vpc" {
-  source     = "./modules/vpc"
-  cidr_block = var.cidr_block
+  source            = "./modules/vpc"
+  cidr_block        = var.cidr_block
   subnet_cidr_range = var.subnet_cidr_range
 }
 
