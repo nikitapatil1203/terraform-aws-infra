@@ -34,16 +34,16 @@ resource "aws_s3_bucket_versioning" "s3-bucket-versioning" {
   versioning_configuration {
     status = "Enabled"
   }
-  
+
 }
 
 resource "aws_dynamodb_table" "terraform_lock" {
-  name           = "terraform-lock"
-  billing_mode   = "PAY_PER_REQUEST"
-  hash_key       = "LockID"
+  name         = "terraform-lock"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "LockID"
 
   attribute {
     name = "LockID"
-    type = "S"           #lockId type is string
+    type = "S" #lockId type is string
   }
 }
