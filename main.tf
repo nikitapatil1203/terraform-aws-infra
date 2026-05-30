@@ -15,3 +15,35 @@ module "ec2_instance" {
 
 }
 
+resource "aws_s3_bucket" "s3-bucket" {
+  bucket = "nikita-s3-bucket-testing"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_s3_bucket_acl" "s3-bucket-privacy" {
+  bucket = aws_s3_bucket.s3-bucket.id
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_versioning" "s3-bucket-versioning" {
+  bucket = aws_s3_bucket.s3-bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+  
+}
+
+resource "aws_dynamodb_table" "terraform_lock" {
+  name           = "terraform-lock"
+  billing_mode   = "PAY_PER_REQUEST"
+  hash_key       = "LockID"
+
+  attribute {
+    name = "LockID"
+    type = "S"           #lockId type is string
+  }
+}
