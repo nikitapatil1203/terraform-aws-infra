@@ -12,38 +12,30 @@ module "ec2_instance" {
   ami_value     = var.ami_value
   subnet_id     = module.vpc.subnet_id
   key_name      = var.key_name
-
 }
 
-resource "aws_s3_bucket" "s3-bucket" {
-  bucket = "nikita-s3-bucket-testing"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
+# one time setup
+module "s3_bucket" {
+  source                   = "./modules/s3_bucket"
+  bucket_environment       = var.bucket_environment
+  bucket_name              = var.bucket_name
+  bucket_tag               = var.bucket_tag
+  aws_s3_bucket_versioning = var.aws_s3_bucket_versioning
 }
 
-resource "aws_s3_bucket_acl" "s3-bucket-privacy" {
-  bucket = aws_s3_bucket.s3-bucket.id
-  acl    = "private"
+
+
+# one time setup
+module "dynamodb_table" {
+  source = "./modules/dynamodb_table"
 }
 
-resource "aws_s3_bucket_versioning" "s3-bucket-versioning" {
-  bucket = aws_s3_bucket.s3-bucket.id
-  versioning_configuration {
-    status = "Enabled"
-  }
 
-}
 
-resource "aws_dynamodb_table" "terraform_lock" {
-  name         = "terraform-lock"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
 
-  attribute {
-    name = "LockID"
-    type = "S" #lockId type is string
-  }
-}
+
+
+
+
+
+

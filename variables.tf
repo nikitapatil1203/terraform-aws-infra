@@ -23,7 +23,24 @@ variable "key_name" {
   type        = string
 }
 
-variable "vpc_id" {
-  description = "vpc_id"
+
+variable "bucket_name" {
+  description = "bucket_name"
+  type        = string
+}
+
+variable "bucket_tag" {
+  description = "bucket_tag"
+  type        = string
+}
+
+variable "bucket_environment" {
+  description = "bucket_environment"
+  type        = string
+}
+
+
+variable "aws_s3_bucket_versioning" {
+  description = "aws_s3_bucket_versioning"
   type        = string
 }
