@@ -17,14 +17,14 @@ resource "aws_instance" "ec2_instance_east" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("/Users/nikitapatil/Downloads/NikitaPatilNew.pem")
+    private_key = file("add .pem file path")
    # private_key = var.key_name
     host        = self.public_ip
   }
 
    # 1. File Provisioner: Copies a local script to the EC2 instance
   provisioner "file" {
-    source      = "/Users/nikitapatil/Desktop/DevOps_Projects/Terraform_New_20May2026/app.py"
+    source      = "add app.py path"
     destination = "/home/ubuntu/app.py"
   }
 
