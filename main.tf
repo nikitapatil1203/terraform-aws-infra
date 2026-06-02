@@ -12,6 +12,7 @@ module "ec2_instance" {
   ami_value     = var.ami_value
   subnet_id     = module.vpc.subnet_id
   key_name      = var.key_name
+
 }
 
 

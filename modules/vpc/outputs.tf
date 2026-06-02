@@ -3,5 +3,5 @@ output "vpc_id"{
 }
 
 output "subnet_id"{
-    value = aws_subnet.private_subnet_east.id
+    value = aws_subnet.public_subnet_east.id
 }

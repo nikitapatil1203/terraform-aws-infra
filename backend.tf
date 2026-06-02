@@ -1,3 +1,4 @@
+/*
 terraform {
   backend "s3" {
     bucket         = "nikita-s3-bucket-testing-1"
@@ -7,4 +8,6 @@ terraform {
     dynamodb_table = "terraform-lock"
   }
 }
+
+*/
 
