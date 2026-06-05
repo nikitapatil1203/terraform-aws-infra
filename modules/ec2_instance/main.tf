@@ -36,7 +36,7 @@ resource "aws_instance" "ec2_instance_east" {
      "pip3 install flask --break-system-packages",
      "nohup sudo python3 /home/ubuntu/app.py > /home/ubuntu/app.log 2>&1 &" 
     ]
-  }
+  }  
 }
 
 

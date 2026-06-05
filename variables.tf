@@ -15,7 +15,12 @@ variable "subnet_cidr_range" {
 
 variable "instance_type" {
   description = "instance_type"
-  type        = string
+  type        = map(string)
+  default = {
+    "dev"   = "t3.micro"
+    "stage" = "t3.small"
+  }
+
 }
 
 variable "key_name" {

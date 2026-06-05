@@ -8,10 +8,10 @@ module "vpc" {
 module "ec2_instance" {
   source        = "./modules/ec2_instance"
   vpc_id        = module.vpc.vpc_id
-  instance_type = var.instance_type
   ami_value     = var.ami_value
   subnet_id     = module.vpc.subnet_id
   key_name      = var.key_name
+  instance_type = lookup(var.instance_type, terraform.workspace, "t3.micro")
 
 }
 
